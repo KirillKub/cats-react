@@ -1,7 +1,8 @@
-import {GET_RESPONSE, GET_FULL_CARD} from '../actions/actionsType';
+import {GET_RESPONSE, GET_FULL_CARD, SORT_BY_TITLE} from '../actions/actionsType';
 
 const initialState = {
   itemList: [],
+  copyItemList: [],
   basePath: '',
   fullCard: {
     name: '',
@@ -19,6 +20,7 @@ export default function rootReducer(state = initialState, action) {
       return {
         ...state,
         itemList: action.itemList,
+        copyItemList: action.itemList,
         basePath: action.basePath,
       } 
     case GET_FULL_CARD:
@@ -26,6 +28,13 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         fullCard: action.fullCard
     } 
+    case SORT_BY_TITLE:
+      let text = action.event.target.value;
+      let newItemList = state.copyItemList.filter(elem => elem.name.toLowerCase().includes(text.toLowerCase()));
+      return {
+        ...state,
+        itemList: newItemList,
+      }
     default:
       return state;
   }

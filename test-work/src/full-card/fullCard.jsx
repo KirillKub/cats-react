@@ -11,7 +11,7 @@ export default function FullCard(props) {
         <div className="full-card__block-bio">{bio}</div>
       </div>
       <div className="full-card__img">
-        <img src={`https://mrsoft.by/tz20/${pic}`} alt=""/>
+        <img src={`https://mrsoft.by/tz20/${pic}`} alt="cat"/>
       </div>    
     </div>
   ) : null;

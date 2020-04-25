@@ -1,4 +1,11 @@
-import {GET_RESPONSE, GET_FULL_CARD} from './actionsType'
+import {GET_RESPONSE, GET_FULL_CARD, SORT_BY_TITLE} from './actionsType'
+
+export function sortByTitle(event) {
+  return {
+    type: SORT_BY_TITLE,
+    event,
+  }
+}
 
 export function getResponse(data) {
   return {

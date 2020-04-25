@@ -1,10 +1,10 @@
 import React from 'react';
 import './search.scss';
 
-export default function Search() {
+export default function Search(props) {
   return (
     <div className="search">
-      <input type="text" className="search-input" placeholder="Live filter"/>
+      <input onInput={props.sortByTitle} type="text" className="search-input" placeholder="Live filter(by name)"/>
     </div>
   );
 }

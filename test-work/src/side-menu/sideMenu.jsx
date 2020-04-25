@@ -6,7 +6,7 @@ import Search from './seacrh/search';
 export default function SideMenu(props) {
   return (
     <div className="menu">
-      <Search></Search>
+      <Search sortByTitle={props.sortByTitle}></Search>
       <ListCard itemList={props.itemList} getFullCard={props.getFullCard}></ListCard>
     </div>
   );
