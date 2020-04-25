@@ -1,4 +1,4 @@
-import {GET_RESPONSE, GET_FULL_CARD, SORT_BY_TITLE} from './actionsType'
+import { GET_RESPONSE, GET_FULL_CARD, SORT_BY_TITLE } from './actionsType'
 
 export function sortByTitle(event) {
   return {
@@ -19,6 +19,7 @@ export function getFullCard(data) {
   return {
     type: GET_FULL_CARD,
     fullCard: data,
+    activeItem: data.id
   }
 }
 
@@ -31,10 +32,10 @@ export function fetchData() {
 }
 
 export function fetchFullCard(data) {
-  const {more, shortInfo, name} = data;
+  const {more, shortInfo, name, id} = data;
   return (dispatch) => {
     return fetch(`https://cors-anywhere.herokuapp.com/https://mrsoft.by/tz20/${more}`)
     .then(res => res.json())
-    .then(elem => dispatch(getFullCard({...elem, shortInfo, name})))
+    .then(elem => dispatch(getFullCard({...elem, shortInfo, name, id})))
   }
 }

@@ -15,7 +15,12 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <SideMenu itemList={this.props.itemList} getFullCard={this.props.fetchFullCard} sortByTitle={this.props.sortByTitle}></SideMenu>  
+          <SideMenu 
+          itemList={this.props.itemList} 
+          getFullCard={this.props.fetchFullCard} 
+          sortByTitle={this.props.sortByTitle}
+          activeItem={this.props.activeItem}
+          ></SideMenu>  
           <Route path="/:id">
             <FullCard fullCard={this.props.fullCard}></FullCard>  
           </Route>  
@@ -33,6 +38,7 @@ function mapStateToProps(state) {
     copyItemList: state.copyItemList,
     basePath: state.basePath,
     fullCard: state.fullCard,
+    activeItem: state.activeItem,
   }
 }
 

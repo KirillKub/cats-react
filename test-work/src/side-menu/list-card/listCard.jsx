@@ -12,6 +12,7 @@ export default class ListCard extends Component {
         name={item.name}
         shortInfo={item.shortInfo}
         more={item.more}
+        activeItem={this.props.activeItem}
         getFullCard={this.props.getFullCard}
         >
         </Card>

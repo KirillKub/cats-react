@@ -4,6 +4,7 @@ const initialState = {
   itemList: [],
   copyItemList: [],
   basePath: '',
+  activeItem: 0,
   fullCard: {
     name: '',
     id: null,
@@ -26,7 +27,8 @@ export default function rootReducer(state = initialState, action) {
     case GET_FULL_CARD:
       return {
         ...state,
-        fullCard: action.fullCard
+        fullCard: action.fullCard,
+        activeItem: action.activeItem,
     } 
     case SORT_BY_TITLE:
       let text = action.event.target.value;
