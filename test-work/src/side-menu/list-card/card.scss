@@ -27,9 +27,14 @@
 
   a {
     text-decoration: none;
+    background: none;
   }
 }
 
 .active {
   background: blue;
+}
+
+.deleted {
+  background: gray;
 }

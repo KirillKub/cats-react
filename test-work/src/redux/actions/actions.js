@@ -1,4 +1,4 @@
-import { GET_RESPONSE, GET_FULL_CARD, SORT_BY_TITLE } from './actionsType'
+import { GET_RESPONSE, GET_FULL_CARD, SORT_BY_TITLE, DELETE_ITEM, RETURN_ITEM } from './actionsType'
 
 export function sortByTitle(event) {
   return {
@@ -20,6 +20,20 @@ export function getFullCard(data) {
     type: GET_FULL_CARD,
     fullCard: data,
     activeItem: data.id
+  }
+}
+
+export function deleteItem(id) {
+  return {
+    type: DELETE_ITEM,
+    id: id
+  }
+}
+
+export function returnItem(id) {
+  return {
+    type: RETURN_ITEM,
+    id: id,
   }
 }
 

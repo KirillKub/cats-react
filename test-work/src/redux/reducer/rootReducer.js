@@ -1,4 +1,4 @@
-import {GET_RESPONSE, GET_FULL_CARD, SORT_BY_TITLE} from '../actions/actionsType';
+import {GET_RESPONSE, GET_FULL_CARD, SORT_BY_TITLE, DELETE_ITEM, RETURN_ITEM} from '../actions/actionsType';
 
 const initialState = {
   itemList: [],
@@ -37,6 +37,33 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         itemList: newItemList,
       }
+    case DELETE_ITEM:
+      let id = action.id;
+      let index = state.copyItemList.indexOf(state.copyItemList.find(elem => elem.id === id));
+      let newArray = [...state.copyItemList];
+      let item = newArray.splice(index,1);
+      item[0].deleted = true;
+      let date = new Date();
+      item[0].deletedTime = `deleted ${date.getDate()}.${("0" + (date.getMonth() + 1)).slice(-2)}.${date.getFullYear()} ${date.getUTCHours()}:${date.getMinutes()}`;
+      newArray.push(...item);
+      return {
+        ...state,
+        itemList: newArray,
+        copyItemList: newArray,
+      }
+    case RETURN_ITEM:
+      let elemId = action.id;
+      let elemIndex = state.copyItemList.indexOf(state.copyItemList.find(elem => elem.id === elemId));
+      let newArr = [...state.copyItemList];
+      let elem = newArr.splice(elemIndex,1);
+      elem[0].deleted = false;
+      newArr.unshift(...elem);
+    return {
+      ...state,
+      itemList: newArr,
+      copyItemList: newArr,
+      activeItem: 0,
+    }
     default:
       return state;
   }
