@@ -1,0 +1,13 @@
+.search {
+  margin: 2px 5px;
+  ::placeholder {
+    color: black;
+    font-size: 18px;
+  }
+  &-input {
+    border: 1px solid black;
+    width: 150px;
+    padding: 5px;
+    font-size: 18px;
+  }
+}

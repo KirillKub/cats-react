@@ -1,0 +1,27 @@
+.card {
+  margin: 5px;
+  border: 1px solid #34ebe1;
+  width: 150px;
+  padding: 5px;
+  :hover {
+    cursor: pointer;
+  }
+
+  &__head {
+    display: flex;
+    justify-content: space-between;
+
+    &-title {
+      color: #34ebe1;
+      font-weight: bold;
+    }
+
+    &-delete {
+      color: orange;
+    }
+  }
+
+  &-info {
+    color: #34ebe1;
+  }
+}

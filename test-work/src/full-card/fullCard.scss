@@ -1,0 +1,33 @@
+.full-card {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+
+  &__block {    
+
+    &-title {
+      color: blue;
+      font-size: 25px;
+      font-weight: bold;
+      margin-bottom: 25px;
+    }
+
+    &-info {
+      color: blue;
+      font-size: 22px;
+      margin-bottom: 25px;
+    }
+
+    &-bio {
+      color: blue;
+      font-size: 18px;
+    }
+  }
+
+  &__img {
+    img {
+      border-radius: 50%;
+    }
+  }
+
+}
