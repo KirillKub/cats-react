@@ -7,7 +7,7 @@ export default function SideMenu(props) {
   return (
     <div className="menu">
       <Search></Search>
-      <ListCard itemList={props.itemList}></ListCard>
+      <ListCard itemList={props.itemList} getFullCard={props.getFullCard}></ListCard>
     </div>
   );
 }

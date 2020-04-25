@@ -8,8 +8,11 @@ export default class ListCard extends Component {
       return(
         <Card 
         key={item.id}
+        id={item.id}
         name={item.name}
         shortInfo={item.shortInfo}
+        more={item.more}
+        getFullCard={this.props.getFullCard}
         >
         </Card>
       )
