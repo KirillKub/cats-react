@@ -1,13 +1,13 @@
 import React from 'react';
 import './sideMenu.scss';
-import ListCars from './list-card/listCard';
+import ListCard from './list-card/listCard';
 import Search from './seacrh/search';
 
-export default function SideMenu() {
+export default function SideMenu(props) {
   return (
     <div className="menu">
       <Search></Search>
-      <ListCars></ListCars>
+      <ListCard itemList={props.itemList}></ListCard>
     </div>
   );
 }
