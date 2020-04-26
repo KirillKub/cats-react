@@ -25,10 +25,22 @@ export default function rootReducer(state = initialState, action) {
         basePath: action.basePath,
       } 
     case GET_FULL_CARD:
+      let card = action.fullCard;
+      let activeElem = action.activeItem;
+      if(state.itemList.find(item => item.id === action.activeItem).deleted || activeElem === 0) {
+        card = {
+          name: '',
+          id: null,
+          bio: '',
+          pic: '',
+          shortInfo: '',
+        };
+        activeElem = 0;
+      }
       return {
         ...state,
-        fullCard: action.fullCard,
-        activeItem: action.activeItem,
+        fullCard: card,
+        activeItem: activeElem,
     } 
     case SORT_BY_TITLE:
       let text = action.event.target.value;
@@ -52,6 +64,7 @@ export default function rootReducer(state = initialState, action) {
         copyItemList: newArray,
       }
     case RETURN_ITEM:
+      console.log(1)
       let elemId = action.id;
       let elemIndex = state.copyItemList.indexOf(state.copyItemList.find(elem => elem.id === elemId));
       let newArr = [...state.copyItemList];
@@ -63,12 +76,19 @@ export default function rootReducer(state = initialState, action) {
         itemList: newArr,
         copyItemList: newArr,
         activeItem: 0,
+        fullCard: {
+          name: '',
+          id: null,
+          bio: '',
+          pic: '',
+          shortInfo: '',
+        },
       }
     case CREATE_STATE:
-      let {itemList,copyItemList,basePath,activeItem, fullCard} = action.data;
+      let {copyItemList,basePath,activeItem, fullCard} = action.data;
       return {
         ...state,
-        itemList,
+        itemList: copyItemList,
         copyItemList,
         basePath,
         activeItem,
@@ -77,7 +97,7 @@ export default function rootReducer(state = initialState, action) {
     case SAVE_STATE: 
       localStorage.setItem('state', JSON.stringify(state))
       return {
-        ...state
+        ...state,
       }
     default:
       return state;
