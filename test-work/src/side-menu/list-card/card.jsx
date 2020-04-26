@@ -16,15 +16,14 @@ export default function Card(props) {
       </div>
       <div className="card-info">{`${deletedTime}`}</div>
     </div> 
-    : 
-    <NavLink to={`${id}`}>
-      <div className={props.activeItem === id ? "card active" : "card"} title="select item" onClick={() => props.getFullCard({more,shortInfo,name,id})}>
+    : <div className={props.activeItem === id ? "card active" : "card"} title="select item" onClick={() => props.getFullCard({more,shortInfo,name,id})}>
+      <NavLink to={`${id}`}>
         <div className="card__head">
           <div className="card__head-title">{name}</div>
           <div className="card__head-delete" title="delete item" onClick={() => props.deleteItem(id)}>X</div>
         </div>
         <div className="card-info">{shortInfo}</div>
-      </div>
-    </NavLink>
+      </NavLink>
+    </div>
   );
 }

@@ -3,12 +3,19 @@ import './App.scss';
 import SideMenu from './side-menu/sideMenu';
 import FullCard from './full-card/fullCard';
 import { connect } from 'react-redux';
-import {fetchData, fetchFullCard, sortByTitle, deleteItem, returnItem} from './redux/actions/actions'
+import {fetchData, fetchFullCard, sortByTitle, deleteItem, returnItem, createState, saveState} from './redux/actions/actions'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
 class App extends Component {
   componentWillMount() {
-    this.props.makeResponse();
+    if(localStorage.getItem('state')) {
+      this.props.createState()
+    }
+    else this.props.makeResponse();
+    console.log(JSON.parse(localStorage.getItem('state')));
+  }
+  componentDidUpdate() {
+    this.props.saveState()
   }
   render() {
     return (
@@ -27,7 +34,7 @@ class App extends Component {
           </Route>  
           <div>{this.props.req}</div>
         </div>
-        <Redirect to={'/'}/>
+        <Redirect to={`/${this.props.activeItem}`}/>
       </Router>  
     );
   }
@@ -45,6 +52,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
+    saveState: () => dispatch(saveState()),
+    createState: () => dispatch(createState()),
     returnItem: (id) => dispatch(returnItem(id)),
     deleteItem: (id) => dispatch(deleteItem(id)),
     sortByTitle: (event) => dispatch(sortByTitle(event)),

@@ -1,7 +1,7 @@
 import React from 'react';
 import './sideMenu.scss';
 import ListCard from './list-card/listCard';
-import Search from './seacrh/search';
+import Search from './search/search';
 
 export default function SideMenu(props) {
   return (

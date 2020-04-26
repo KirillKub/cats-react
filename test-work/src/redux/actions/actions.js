@@ -1,4 +1,4 @@
-import { GET_RESPONSE, GET_FULL_CARD, SORT_BY_TITLE, DELETE_ITEM, RETURN_ITEM } from './actionsType'
+import { GET_RESPONSE, GET_FULL_CARD, SORT_BY_TITLE, DELETE_ITEM, RETURN_ITEM, CREATE_STATE, SAVE_STATE } from './actionsType'
 
 export function sortByTitle(event) {
   return {
@@ -34,6 +34,20 @@ export function returnItem(id) {
   return {
     type: RETURN_ITEM,
     id: id,
+  }
+}
+
+export function createState() {
+  const data = JSON.parse(localStorage.getItem('state'));
+  return {
+    type: CREATE_STATE,
+    data: data,
+  }
+}
+
+export function saveState() {
+  return {
+    type: SAVE_STATE,
   }
 }
 
