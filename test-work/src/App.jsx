@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
 class App extends Component {
   componentWillMount() {
+    localStorage.clear()
     if(localStorage.getItem('state')) {
       this.props.createState()
     }
@@ -34,7 +35,7 @@ class App extends Component {
           </Route>  
           <div>{this.props.req}</div>
         </div>
-        <Redirect to={`/${this.props.activeItem}`}/>
+        <Redirect to={`${this.props.activeItem ? '/' + this.props.activeItem : '/'}`}/>
       </Router>  
     );
   }
