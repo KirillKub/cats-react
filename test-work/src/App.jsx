@@ -34,6 +34,7 @@ class App extends Component {
           <div>{this.props.req}</div>
         </div>
         <Redirect to={`${this.props.activeItem ? '/' + this.props.activeItem : '/'}`}/>
+        <Route path="/"></Route>
       </Router>  
     );
   }
