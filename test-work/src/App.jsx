@@ -8,12 +8,10 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
 class App extends Component {
   componentWillMount() {
-    localStorage.clear()
     if(localStorage.getItem('state')) {
       this.props.createState()
     }
     else this.props.makeResponse();
-    console.log(JSON.parse(localStorage.getItem('state')));
   }
   componentDidUpdate() {
     this.props.saveState()

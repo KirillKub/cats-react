@@ -64,7 +64,6 @@ export default function rootReducer(state = initialState, action) {
         copyItemList: newArray,
       }
     case RETURN_ITEM:
-      console.log(1)
       let elemId = action.id;
       let elemIndex = state.copyItemList.indexOf(state.copyItemList.find(elem => elem.id === elemId));
       let newArr = [...state.copyItemList];
